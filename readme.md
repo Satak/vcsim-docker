@@ -7,6 +7,8 @@ Pull this Docker container and run it in 443 port
 - `docker pull satak/vcsim`
 - `docker run -d --name vcsim -p 443:443 vcsim`
 
+DockerHub: <https://hub.docker.com/r/satak/vcsim>
+
 ## Powershell PowerCLI
 
 There is a nice Powershell module for VMware called **PowerCLI**
