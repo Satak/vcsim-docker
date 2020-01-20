@@ -1,23 +1,35 @@
 # vCenter Simulator Docker Container
 
+`vcsim` is a nice vCenter simulator by VMware. It's made with golang and needs to be compiled before use. Easiest way to run it, is to run it in a Docker container. This repository has the ready-to-use container source that you can pull from the Docker Hub as a working Docker Image and run it.
+
+After vcsim container running in your Docker environment you can interact with it with different CLI tools like Powershell or govc. You can even use Terraform against vcsim but currently it's a bit limited since you can't really clone VMs with it.
+
+When you start vcsim it has it's own default configuration with datastores, vms, resource pools and vms that are documented at the end of this document in the Terraform section. You can also put existing VMware configuration from your real vCenter environment and put it in the simulator that is documented here: <https://github.com/vmware/govmomi/wiki/vcsim-features>
+
+vcsim repository: <https://github.com/vmware/govmomi/tree/master/vcsim>
+
 ## Docker
 
-Pull this Docker container and run it in 443 port
+Pull this Docker container and run it in local `443` port
 
 - `docker pull satak/vcsim`
 - `docker run -d --name vcsim -p 443:443 satak/vcsim`
 
-DockerHub: <https://hub.docker.com/r/satak/vcsim>
+DockerHub url: <https://hub.docker.com/r/satak/vcsim>
+
+---
+
+## CLI tools
 
 ## Powershell PowerCLI
 
-There is a nice Powershell module for VMware called **PowerCLI**
+You can interact with vcsim with different cmdline tools like **PowerCLI**, which is a nice Powershell module for VMware.
 
 ```txt
 VMware PowerCLI is a command-line and scripting tool built on Windows PowerShell, and provides more than 700 cmdlets for managing and automating vSphere, vCloud, vRealize Operations Manager, vSAN, NSX-T, VMware Cloud on AWS, VMware HCX, VMware Site Recovery Manager, and VMware Horizon environments.
 ```
 
-Install module, connect to vcsim (it doesn't have any authentication so you can use what ever username and password) and get VMs:
+Install **PowerCLI** module, connect to vcsim (it doesn't have any authentication so you can use what ever username and password) and get VMs:
 
 ```powershell
 # first install the vmware powercli module
@@ -39,9 +51,6 @@ DC0_H0_VM1           PoweredOn  1        0.031
 DC0_C0_RP0_VM0       PoweredOn  1        0.031
 DC0_C0_RP0_VM1       PoweredOn  1        0.031
 #>
-```
-
-```powershell
 
 # stop VM
 Get-VM -Name DC0_H0_VM0 | Stop-VM
@@ -54,12 +63,18 @@ Get-VM -Name DC0_H0_VM0 | Start-VM
 
 govc is a vSphere CLI built on top of govmomi.
 
-gvc binaries: <https://github.com/vmware/govmomi/releases>
+govc binaries: <https://github.com/vmware/govmomi/releases>
 
 Direct links:
 
 - MacOS: <https://github.com/vmware/govmomi/releases/download/v0.22.1/govc_darwin_amd64.gz>
 - Windows: <https://github.com/vmware/govmomi/releases/download/v0.22.1/govc_windows_amd64.exe.zip>
+
+### Windows Installation
+
+For Windows just download the govc, rename the downloaded binary to `govc.exe` and move it to `C:\Program Files\govc`, add that path to environment variables so you can then use `govc` from any location.
+
+### Linux / MacOS
 
 ```bash
 # install govc
@@ -109,3 +124,22 @@ govc vm.create -on=false -host DC0_H0 -version 6.7 -g otherLinux64Guest -c 2 tem
   - `terraform init`
   - `terraform plan`
   - `terraform apply`
+
+### Working variables for vcsim
+
+```terraform
+vsphere_user     = "username"
+vsphere_password = "password"
+vsphere_server   = "localhost"
+
+datacenter    = "DC0"
+cluster       = "DC0_H0"
+datastore     = "datastore/LocalDS_0"
+resource_pool = "DC0_H0/Resources"
+network       = "network/VM Network"
+
+vm_name     = "vcsimtest"
+vm_template = "test-vm"
+vm_folder   = "vm"
+vm_password = "password"
+```

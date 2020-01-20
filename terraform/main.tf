@@ -51,6 +51,8 @@ resource "vsphere_virtual_machine" "vm" {
     adapter_type = data.vsphere_virtual_machine.template.network_interface_types[0]
   }
 
+  /*
+  This clone/customize part here doesn't work with vcsim
   clone {
     template_uuid = data.vsphere_virtual_machine.template.id
     customize {
@@ -64,8 +66,9 @@ resource "vsphere_virtual_machine" "vm" {
       }
     }
   }
+  */
 
   wait_for_guest_net_routable = false
   wait_for_guest_ip_timeout   = 0
-  wait_for_guest_net_timeout  = 0
+  wait_for_guest_net_timeout  = -1
 }
