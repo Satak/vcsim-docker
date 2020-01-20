@@ -5,7 +5,7 @@
 Pull this Docker container and run it in 443 port
 
 - `docker pull satak/vcsim`
-- `docker run -d --name vcsim -p 443:443 vcsim`
+- `docker run -d --name vcsim -p 443:443 satak/vcsim`
 
 DockerHub: <https://hub.docker.com/r/satak/vcsim>
 
