@@ -91,7 +91,8 @@ govc vm.ip DC0_H0_VM1
 # guestId: windows9Server64Guest
 
 # create VM
-govc vm.create -m 2048 -c 2 -g windows9Server64Guest -net.adapter vmxnet3 -disk.controller pvscsi test-vm
+# govc vm.create -m 2048 -c 2 -g windows9Server64Guest -net.adapter vmxnet3 -disk.controller pvscsi test-vm
+govc vm.create -on=false -host DC0_H0 -version 6.7 -g otherLinux64Guest -c 2 template-vm
 ```
 
 ## Terraform
