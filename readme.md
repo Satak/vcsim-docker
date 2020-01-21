@@ -1,5 +1,7 @@
 # vCenter Simulator Docker Container
 
+<img src="https://img.icons8.com/color/96/000000/vmware.png">
+
 `vcsim` is a nice vCenter simulator by VMware. It's made with golang and needs to be compiled before use. Easiest way to run it, is to run it in a Docker container. This repository has the ready-to-use container source that you can pull from the Docker Hub as a working Docker Image and run it.
 
 After vcsim container running in your Docker environment you can interact with it with different CLI tools like Powershell or govc. You can even use Terraform against vcsim but currently it's a bit limited since you can't really clone VMs with it.
@@ -22,6 +24,8 @@ DockerHub url: <https://hub.docker.com/r/satak/vcsim>
 ## CLI tools
 
 ## Powershell PowerCLI
+
+<img src="https://img.icons8.com/color/96/000000/powershell.png">
 
 You can interact with vcsim with different cmdline tools like **PowerCLI**, which is a nice Powershell module for VMware.
 
@@ -72,9 +76,13 @@ Direct links:
 
 ### Windows Installation
 
+<img src="https://img.icons8.com/color/48/000000/windows-10.png">
+
 For Windows just download the govc, rename the downloaded binary to `govc.exe` and move it to `C:\Program Files\govc`, add that path to environment variables so you can then use `govc` from any location.
 
 ### Linux / MacOS
+
+<img src="https://img.icons8.com/color/48/000000/linux.png">
 
 ```bash
 # install govc
@@ -111,6 +119,15 @@ govc vm.create -on=false -host DC0_H0 -version 6.7 -g otherLinux64Guest -c 2 tem
 ```
 
 ## Terraform
+
+<img alt="Terraform" src="https://cdn.rawgit.com/hashicorp/terraform-website/master/content/source/assets/images/logo-hashicorp.svg" width="300px">
+
+Terraform is the leading infrastructure as code (IaC) platform that supports wide variety of APIs like VMware vCenter. We can use Terraform against vcsim too, but currently the support is a bit limited because assets in vcsim are not fully configured for Terraform usage.
+
+- Terraform homepage: <https://www.terraform.io/>
+- Terraform vSphere provider: <https://www.terraform.io/docs/providers/vsphere/index.html>
+
+### Installation
 
 - Download Terraform CLI from here: <https://www.terraform.io/downloads.html>
 - Direct link to Windows x64 version:
