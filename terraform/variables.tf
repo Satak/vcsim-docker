@@ -9,5 +9,5 @@ variable "network" {}
 
 variable "vm_name" {}
 variable "vm_template" {}
-variable "vm_folder" {}
+// variable "vm_folder" {}
 variable "vm_password" {}

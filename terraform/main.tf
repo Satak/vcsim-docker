@@ -39,7 +39,7 @@ resource "vsphere_virtual_machine" "vm" {
   num_cpus = 2
   memory   = 1024
 
-  folder = var.vm_folder
+  // folder = var.vm_folder
 
   disk {
     label = "disk0"
@@ -51,14 +51,14 @@ resource "vsphere_virtual_machine" "vm" {
     adapter_type = data.vsphere_virtual_machine.template.network_interface_types[0]
   }
 
-  /*
-  This clone/customize part here doesn't work with vcsim
+  /* This clone/customize part here doesn't work with vcsim
   clone {
     template_uuid = data.vsphere_virtual_machine.template.id
+
     customize {
-      windows_options {
-        computer_name  = var.vm_name
-        admin_password = var.vm_password
+      linux_options {
+        host_name  = var.vm_name
+        domain = "test.internal"
       }
       network_interface {
         ipv4_address = "10.134.3.162"

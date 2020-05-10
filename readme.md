@@ -37,7 +37,7 @@ Install **PowerCLI** module, connect to vcsim (it doesn't have any authenticatio
 
 ```powershell
 # first install the vmware powercli module
-Install-Module VMware.PowerCLI
+Install-Module VMware.PowerCLI -AllowClobber
 
 # connect to vcsim, this takes 1-2 minutes, -Force switch to bypass the SSL certificate issue. Username and password can be anything, there is no authentication
 Connect-VIServer localhost -User 'u' -Password 'p' -Force
