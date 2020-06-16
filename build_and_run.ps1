@@ -23,3 +23,6 @@ if ($Push) {
 if ($Run) {
   docker run -it -d --name $appName -p "$($externalPort):$($internalPort)" $tag
 }
+
+# delete builder docker image
+docker rmi $(docker images --filter "label=builder=true" -q)
