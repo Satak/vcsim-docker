@@ -1,5 +1,7 @@
 # vCenter Simulator Docker Container
 
+![docker pulls](https://img.shields.io/docker/pulls/satak/vcsim.svg)
+
 <img src="https://img.icons8.com/color/96/000000/vmware.png">
 
 `vcsim` is a nice vCenter simulator by VMware. It's made with golang and needs to be compiled before use. Easiest way to run it, is to run it in a Docker container. This repository has the ready-to-use container source that you can pull from the Docker Hub as a working Docker Image and run it.
