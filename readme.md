@@ -2,6 +2,7 @@
 
 ![docker pulls](https://img.shields.io/docker/pulls/satak/vcsim.svg)
 ![docker size](https://img.shields.io/docker/image-size/satak/vcsim.svg)
+![docker version](https://img.shields.io/docker/v/satak/vcsim.svg)
 
 <img src="https://img.icons8.com/color/96/000000/vmware.png">
 
