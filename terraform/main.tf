@@ -51,10 +51,10 @@ resource "vsphere_virtual_machine" "vm" {
     adapter_type = data.vsphere_virtual_machine.template.network_interface_types[0]
   }
 
-  /*clone {
+  clone {
     template_uuid = data.vsphere_virtual_machine.template.id
 
-
+    /*
     customize {
       linux_options {
         host_name  = var.vm_name
@@ -64,14 +64,9 @@ resource "vsphere_virtual_machine" "vm" {
         ipv4_address = "10.134.3.162"
         ipv4_netmask = "24"
       }
-    }
+    } */
 
-  } */
-
-  clone {
-    template_uuid = "b487e561-5b48-535a-9ad8-b130c10eda5a"
   }
-
 
   wait_for_guest_net_routable = false
   wait_for_guest_ip_timeout   = 0
