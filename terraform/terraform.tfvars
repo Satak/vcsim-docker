@@ -10,6 +10,5 @@ network       = "network/VM Network"
 
 vm_name     = "vcsimtest4"
 vm_template = "DC0_H0_VM0"
-// vm_template = "vcsimtest2"
 // vm_folder   = "vm"
 vm_password = "xxx"

@@ -26,3 +26,10 @@ if ($Run) {
 
 # delete builder docker image
 docker rmi $(docker images --filter "label=builder=true" -q)
+
+Write-Output "`n"
+Write-Output "To push the docker image run command:"
+Write-Output "docker push $tag"
+Write-Output "`n"
+Write-Output "To run the container run command:"
+Write-Output "docker run -it -d --name $appName -p '$($externalPort):$($internalPort)' $tag"

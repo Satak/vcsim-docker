@@ -4,9 +4,9 @@
 ![docker size](https://img.shields.io/docker/image-size/satak/vcsim.svg)
 ![docker version](https://img.shields.io/docker/v/satak/vcsim.svg)
 
-| Last Build Time |
-| --------------- |
-| 18.11.2020      |
+| Last Build Time         |
+| ----------------------- |
+| 12.01.2021 (dd.MM.YYYY) |
 
 <img src="https://img.icons8.com/color/96/000000/vmware.png">
 
