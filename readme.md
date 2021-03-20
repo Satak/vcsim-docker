@@ -6,7 +6,7 @@
 
 | Last Build Time         |
 | ----------------------- |
-| 12.01.2021 (dd.MM.YYYY) |
+| 20.03.2021 (dd.MM.YYYY) |
 
 <img src="https://img.icons8.com/color/96/000000/vmware.png">
 
@@ -168,3 +168,6 @@ vm_template = "test-vm"
 vm_folder   = "vm"
 vm_password = "password"
 ```
+
+Supports Linux and Windows VMs. To create windows VM first create Windows template by running `create_vm.sh` and then
+run `terraform apply -var="os_type=windows" -var="vm_template=template-vm"`

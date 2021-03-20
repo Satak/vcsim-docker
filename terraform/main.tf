@@ -29,6 +29,11 @@ data "vsphere_virtual_machine" "template" {
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
+locals {
+  is_windows = var.os_type == "windows" ? [1] : []
+  is_linux   = var.os_type == "linux" ? [1] : []
+}
+
 resource "vsphere_virtual_machine" "vm" {
   name             = var.vm_name
   resource_pool_id = data.vsphere_resource_pool.pool.id
@@ -56,10 +61,24 @@ resource "vsphere_virtual_machine" "vm" {
     template_uuid = data.vsphere_virtual_machine.template.id
 
     customize {
-      linux_options {
-        host_name = var.vm_name
-        domain    = "test.internal"
+
+      dynamic "linux_options" {
+        for_each = local.is_linux
+        content {
+          host_name = var.vm_name
+          domain    = "test.internal"
+        }
       }
+
+      dynamic "windows_options" {
+        for_each = local.is_windows
+        content {
+          computer_name  = var.vm_name
+          workgroup      = "WORKGROUP"
+          admin_password = var.vm_password
+        }
+      }
+
       network_interface {
         ipv4_address = "10.134.3.162"
         ipv4_netmask = "24"

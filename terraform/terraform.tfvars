@@ -9,6 +9,7 @@ resource_pool = "DC0_H0/Resources"
 network       = "network/VM Network"
 
 vm_name     = "vcsimtest4"
-vm_template = "DC0_H0_VM0"
+vm_template = "DC0_H0_VM0" # template-vm
 // vm_folder   = "vm"
 vm_password = "xxx"
+os_type = "windows"
